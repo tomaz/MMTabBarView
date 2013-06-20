@@ -58,9 +58,8 @@ NSString *kMMTabBarButtonOberserverContext = @"MMTabBarView.MMTabBarButton.Obser
 
 - (void)dealloc
 {
-    [_closeButton release], _closeButton = nil;
-    [_indicator release], _indicator = nil;    
-    [super dealloc];
+    _closeButton = nil;
+    _indicator = nil;    
 }
 
 - (MMTabBarButtonCell *)cell {
@@ -293,59 +292,59 @@ NSString *kMMTabBarButtonOberserverContext = @"MMTabBarView.MMTabBarButton.Obser
 {
     if ([binding isEqualToString:@"objectCount"])
         {
-        _objectCountBindingObservedObject = [observable retain];
+        _objectCountBindingObservedObject = observable;
         _objectCountBindingKeyPath = [keyPath copy];
         _objectCountBindingOptions = [options copy];
         
-        [_objectCountBindingObservedObject addObserver:self forKeyPath:_objectCountBindingKeyPath options:NSKeyValueObservingOptionInitial|NSKeyValueObservingOptionNew context:kMMTabBarButtonOberserverContext];
+        [_objectCountBindingObservedObject addObserver:self forKeyPath:_objectCountBindingKeyPath options:NSKeyValueObservingOptionInitial|NSKeyValueObservingOptionNew context:(__bridge void *)(kMMTabBarButtonOberserverContext)];
         }
     else if ([binding isEqualToString:@"objectCountColor"])
         {
-        _objectCountColorBindingObservedObject = [observable retain];
+        _objectCountColorBindingObservedObject = observable;
         _objectCountColorBindingKeyPath = [keyPath copy];
         _objectCountColorBindingOptions = [options copy];
         
-        [_objectCountColorBindingObservedObject addObserver:self forKeyPath:_objectCountColorBindingKeyPath options:NSKeyValueObservingOptionInitial|NSKeyValueObservingOptionNew context:kMMTabBarButtonOberserverContext];
+        [_objectCountColorBindingObservedObject addObserver:self forKeyPath:_objectCountColorBindingKeyPath options:NSKeyValueObservingOptionInitial|NSKeyValueObservingOptionNew context:(__bridge void *)(kMMTabBarButtonOberserverContext)];
         }         
     else if ([binding isEqualToString:@"isProcessing"])
         {
-        _isProcessingBindingObservedObject = [observable retain];
+        _isProcessingBindingObservedObject = observable;
         _isProcessingBindingKeyPath = [keyPath copy];
         _isProcessingBindingOptions = [options copy];        
         
-        [_isProcessingBindingObservedObject addObserver:self forKeyPath:_isProcessingBindingKeyPath options:NSKeyValueObservingOptionInitial|NSKeyValueObservingOptionNew context:kMMTabBarButtonOberserverContext];
+        [_isProcessingBindingObservedObject addObserver:self forKeyPath:_isProcessingBindingKeyPath options:NSKeyValueObservingOptionInitial|NSKeyValueObservingOptionNew context:(__bridge void *)(kMMTabBarButtonOberserverContext)];
         }
     else if ([binding isEqualToString:@"isEdited"])
         {
-        _isEditedBindingObservedObject = [observable retain];
+        _isEditedBindingObservedObject = observable;
         _isEditedBindingKeyPath = [keyPath copy];
         _isEditedBindingOptions = [options copy];
         
-        [_isEditedBindingObservedObject addObserver:self forKeyPath:_isEditedBindingKeyPath options:NSKeyValueObservingOptionInitial|NSKeyValueObservingOptionNew context:kMMTabBarButtonOberserverContext];
+        [_isEditedBindingObservedObject addObserver:self forKeyPath:_isEditedBindingKeyPath options:NSKeyValueObservingOptionInitial|NSKeyValueObservingOptionNew context:(__bridge void *)(kMMTabBarButtonOberserverContext)];
         }        
     else if ([binding isEqualToString:@"icon"])
         {
-        _iconBindingObservedObject = [observable retain];
+        _iconBindingObservedObject = observable;
         _iconBindingKeyPath = [keyPath copy];
         _iconBindingOptions = [options copy];
         
-        [_iconBindingObservedObject addObserver:self forKeyPath:_iconBindingKeyPath options:NSKeyValueObservingOptionInitial|NSKeyValueObservingOptionNew context:kMMTabBarButtonOberserverContext];
+        [_iconBindingObservedObject addObserver:self forKeyPath:_iconBindingKeyPath options:NSKeyValueObservingOptionInitial|NSKeyValueObservingOptionNew context:(__bridge void *)(kMMTabBarButtonOberserverContext)];
         }
     else if ([binding isEqualToString:@"largeImage"])
         {
-        _largeImageBindingObservedObject = [observable retain];
+        _largeImageBindingObservedObject = observable;
         _largeImageBindingKeyPath = [keyPath copy];
         _largeImageBindingOptions = [options copy];
         
-        [_largeImageBindingObservedObject addObserver:self forKeyPath:_largeImageBindingKeyPath options:NSKeyValueObservingOptionInitial|NSKeyValueObservingOptionNew context:kMMTabBarButtonOberserverContext];
+        [_largeImageBindingObservedObject addObserver:self forKeyPath:_largeImageBindingKeyPath options:NSKeyValueObservingOptionInitial|NSKeyValueObservingOptionNew context:(__bridge void *)(kMMTabBarButtonOberserverContext)];
         }
     else if ([binding isEqualToString:@"hasCloseButton"])
         {
-        _hasCloseButtonBindingObservedObject = [observable retain];
+        _hasCloseButtonBindingObservedObject = observable;
         _hasCloseButtonBindingKeyPath = [keyPath copy];
         _hasCloseButtonBindingOptions = [options copy];
         
-        [_hasCloseButtonBindingObservedObject addObserver:self forKeyPath:_hasCloseButtonBindingKeyPath options:NSKeyValueObservingOptionInitial|NSKeyValueObservingOptionNew context:kMMTabBarButtonOberserverContext];
+        [_hasCloseButtonBindingObservedObject addObserver:self forKeyPath:_hasCloseButtonBindingKeyPath options:NSKeyValueObservingOptionInitial|NSKeyValueObservingOptionNew context:(__bridge void *)(kMMTabBarButtonOberserverContext)];
         }                 
     else 
         [super bind:binding toObject:observable withKeyPath:keyPath options:options];
@@ -357,51 +356,51 @@ NSString *kMMTabBarButtonOberserverContext = @"MMTabBarView.MMTabBarButton.Obser
     if ([binding isEqualToString:@"objectCount"]) 
         {
         [_objectCountBindingObservedObject removeObserver:self forKeyPath:_objectCountBindingKeyPath];
-        [_objectCountBindingObservedObject release], _objectCountBindingObservedObject = nil;
-        [_objectCountBindingKeyPath release], _objectCountBindingKeyPath = nil;
-        [_objectCountBindingOptions release], _objectCountBindingOptions = nil;
+        _objectCountBindingObservedObject = nil;
+        _objectCountBindingKeyPath = nil;
+        _objectCountBindingOptions = nil;
         }
     if ([binding isEqualToString:@"objectCountColor"]) 
         {
         [_objectCountColorBindingObservedObject removeObserver:self forKeyPath:_objectCountColorBindingKeyPath];
-        [_objectCountColorBindingObservedObject release], _objectCountColorBindingObservedObject = nil;
-        [_objectCountColorBindingKeyPath release], _objectCountColorBindingKeyPath = nil;
-        [_objectCountColorBindingOptions release], _objectCountColorBindingOptions = nil;
+        _objectCountColorBindingObservedObject = nil;
+        _objectCountColorBindingKeyPath = nil;
+        _objectCountColorBindingOptions = nil;
         }        
     else if ([binding isEqualToString:@"isProcessing"])
         {
         [_isProcessingBindingObservedObject removeObserver:self forKeyPath:_isProcessingBindingKeyPath];
-        [_isProcessingBindingObservedObject release], _isProcessingBindingObservedObject = nil;
-        [_isProcessingBindingKeyPath release], _isProcessingBindingKeyPath = nil;
-        [_isProcessingBindingOptions release], _isProcessingBindingOptions = nil;
+        _isProcessingBindingObservedObject = nil;
+        _isProcessingBindingKeyPath = nil;
+        _isProcessingBindingOptions = nil;
         }
     else if ([binding isEqualToString:@"isEdited"])
         {
         [_isEditedBindingObservedObject removeObserver:self forKeyPath:_isEditedBindingKeyPath];
-        [_isEditedBindingObservedObject release], _isEditedBindingObservedObject = nil;
-        [_isEditedBindingKeyPath release], _isEditedBindingKeyPath = nil;
-        [_isEditedBindingOptions release], _isEditedBindingOptions = nil;
+        _isEditedBindingObservedObject = nil;
+        _isEditedBindingKeyPath = nil;
+        _isEditedBindingOptions = nil;
         }        
     else if ([binding isEqualToString:@"icon"])
         {
         [_iconBindingObservedObject removeObserver:self forKeyPath:_iconBindingKeyPath];
-        [_iconBindingObservedObject release], _iconBindingObservedObject = nil;
-        [_iconBindingKeyPath release], _iconBindingKeyPath = nil;
-        [_iconBindingOptions release], _iconBindingOptions = nil;
+        _iconBindingObservedObject = nil;
+        _iconBindingKeyPath = nil;
+        _iconBindingOptions = nil;
         }
     else if ([binding isEqualToString:@"largeImage"])
         {
         [_largeImageBindingObservedObject removeObserver:self forKeyPath:_largeImageBindingKeyPath];
-        [_largeImageBindingObservedObject release], _largeImageBindingObservedObject = nil;
-        [_largeImageBindingKeyPath release], _largeImageBindingKeyPath = nil;
-        [_largeImageBindingOptions release], _largeImageBindingOptions = nil;
+        _largeImageBindingObservedObject = nil;
+        _largeImageBindingKeyPath = nil;
+        _largeImageBindingOptions = nil;
         }
     else if ([binding isEqualToString:@"hasCloseButton"])
         {
         [_hasCloseButtonBindingObservedObject removeObserver:self forKeyPath:_hasCloseButtonBindingKeyPath];
-        [_hasCloseButtonBindingObservedObject release], _hasCloseButtonBindingObservedObject = nil;
-        [_hasCloseButtonBindingKeyPath release], _hasCloseButtonBindingKeyPath = nil;
-        [_hasCloseButtonBindingOptions release], _hasCloseButtonBindingOptions = nil;
+        _hasCloseButtonBindingObservedObject = nil;
+        _hasCloseButtonBindingKeyPath = nil;
+        _hasCloseButtonBindingOptions = nil;
         }           
     else
         [super unbind:binding];
@@ -475,12 +474,12 @@ NSString *kMMTabBarButtonOberserverContext = @"MMTabBarView.MMTabBarButton.Obser
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context 
 {
-    if ([keyPath isEqualTo:_objectCountBindingKeyPath] && context == kMMTabBarButtonOberserverContext) {
+    if ([keyPath isEqualTo:_objectCountBindingKeyPath] && context == (__bridge void *)(kMMTabBarButtonOberserverContext)) {
     
         id objectCountValue = nil;
     
         switch([[change objectForKey:NSKeyValueChangeKindKey] integerValue]) {
-            case NSKeyValueChangeSetting:
+            case NSKeyValueChangeSetting: {
             
                 objectCountValue = [object valueForKeyPath:_objectCountBindingKeyPath];
                 if (objectCountValue == NSNoSelectionMarker) {
@@ -517,11 +516,12 @@ NSString *kMMTabBarButtonOberserverContext = @"MMTabBarView.MMTabBarButton.Obser
                     [self setShowObjectCount:YES];
                 break;
             
+            }
             default:
                 break;
 
         }
-    } else if ([keyPath isEqualTo:_objectCountColorBindingKeyPath] && context == kMMTabBarButtonOberserverContext) {
+    } else if ([keyPath isEqualTo:_objectCountColorBindingKeyPath] && context == (__bridge void *)(kMMTabBarButtonOberserverContext)) {
 
         NSColor *color = nil;
     
@@ -543,7 +543,7 @@ NSString *kMMTabBarButtonOberserverContext = @"MMTabBarView.MMTabBarButton.Obser
                 break;
 
         }        
-    } else if ([keyPath isEqualTo:_isProcessingBindingKeyPath] && context == kMMTabBarButtonOberserverContext) {
+    } else if ([keyPath isEqualTo:_isProcessingBindingKeyPath] && context == (__bridge void *)(kMMTabBarButtonOberserverContext)) {
 
         id isProcessingValue = nil;
     
@@ -583,7 +583,7 @@ NSString *kMMTabBarButtonOberserverContext = @"MMTabBarView.MMTabBarButton.Obser
                 break;
 
         }
-    } else if ([keyPath isEqualTo:_isEditedBindingKeyPath] && context == kMMTabBarButtonOberserverContext) {
+    } else if ([keyPath isEqualTo:_isEditedBindingKeyPath] && context == (__bridge void *)(kMMTabBarButtonOberserverContext)) {
 
         id isEditedValue = nil;
     
@@ -623,7 +623,7 @@ NSString *kMMTabBarButtonOberserverContext = @"MMTabBarView.MMTabBarButton.Obser
                 break;
 
         }        
-    } else if ([keyPath isEqualTo:_iconBindingKeyPath] && context == kMMTabBarButtonOberserverContext) {
+    } else if ([keyPath isEqualTo:_iconBindingKeyPath] && context == (__bridge void *)(kMMTabBarButtonOberserverContext)) {
 
         NSImage *icon = nil;
     
@@ -645,7 +645,7 @@ NSString *kMMTabBarButtonOberserverContext = @"MMTabBarView.MMTabBarButton.Obser
                 break;
 
         }
-    } else if ([keyPath isEqualTo:_largeImageBindingKeyPath] && context == kMMTabBarButtonOberserverContext) {
+    } else if ([keyPath isEqualTo:_largeImageBindingKeyPath] && context == (__bridge void *)(kMMTabBarButtonOberserverContext)) {
 
         NSImage *largeImage = nil;
     
@@ -667,7 +667,7 @@ NSString *kMMTabBarButtonOberserverContext = @"MMTabBarView.MMTabBarButton.Obser
                 break;
 
         }
-    } else if ([keyPath isEqualTo:_hasCloseButtonBindingKeyPath] && context == kMMTabBarButtonOberserverContext) {
+    } else if ([keyPath isEqualTo:_hasCloseButtonBindingKeyPath] && context == (__bridge void *)(kMMTabBarButtonOberserverContext)) {
 
         id hasCloseButtonValue = nil;
     
@@ -711,7 +711,7 @@ NSString *kMMTabBarButtonOberserverContext = @"MMTabBarView.MMTabBarButton.Obser
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
     }
 
-    if (context == kMMTabBarButtonOberserverContext)
+    if (context == (__bridge void *)(kMMTabBarButtonOberserverContext))
         {
         if ([[self tabBarView] sizeButtonsToFit])
             {

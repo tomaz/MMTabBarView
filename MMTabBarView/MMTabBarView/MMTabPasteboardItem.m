@@ -7,6 +7,8 @@
 //
 
 #import "MMTabPasteboardItem.h"
+#import "MMTabBarView.h"
+#import "MMAttachedTabBarButton.h"
 
 @implementation MMTabPasteboardItem
 
@@ -24,12 +26,5 @@
     return self;
 }
 
-- (void)dealloc
-{
-    [_sourceTabBar release], _sourceTabBar = nil;
-    [_attachedTabBarButton release], _attachedTabBarButton = nil;
-    
-    [super dealloc];
-}
 
 @end

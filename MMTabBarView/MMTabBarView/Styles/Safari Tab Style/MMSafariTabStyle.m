@@ -80,11 +80,6 @@ StaticImage(SafariIWITRightCap)
 	return self;
 }
 
-- (void)dealloc {
-	[_objectCountStringAttributes release];
-
-	[super dealloc];
-}
 
 #pragma mark -
 #pragma mark Tab View Specific

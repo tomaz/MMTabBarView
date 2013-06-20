@@ -30,7 +30,7 @@
 		_objectCount = 2;
 		_isEdited = NO;
         _hasCloseButton = YES;
-        _title = [@"Untitled" retain];
+        _title = @"Untitled";
         _objectCountColor = nil;
 	}
 	return self;
@@ -38,13 +38,12 @@
 
 -(void)dealloc {
     
-    [_title release], _title = nil;
-    [_icon release], _icon = nil;
-    [_iconName release], _iconName = nil;
-    [_largeImage release], _largeImage = nil;
-    [_objectCountColor release], _objectCountColor = nil;
+    _title = nil;
+    _icon = nil;
+    _iconName = nil;
+    _largeImage = nil;
+    _objectCountColor = nil;
 
-    [super dealloc];
 }
 
 @end

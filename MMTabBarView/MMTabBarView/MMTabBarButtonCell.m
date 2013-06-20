@@ -81,7 +81,7 @@
         _icon = nil;
         _largeImage = nil;
         _showObjectCount = NO;
-		_objectCountColor = [[NSColor colorWithCalibratedWhite:0.3 alpha:0.45] retain];
+		_objectCountColor = [NSColor colorWithCalibratedWhite:0.3 alpha:0.45];
 		_isEdited = NO;
         _tabState = 0;
         
@@ -93,12 +93,11 @@
 }
 
 - (void)dealloc {
-    [_style release], _style = nil;
-    [_icon release], _icon = nil;
-    [_largeImage release], _largeImage = nil;
-    [_objectCountColor release], _objectCountColor = nil;
+    _style = nil;
+    _icon = nil;
+    _largeImage = nil;
+    _objectCountColor = nil;
          
-    [super dealloc];
 }
 
 - (MMTabBarButton *)controlView {
@@ -139,8 +138,8 @@
 
     @synchronized (self) {
     
-        [_style release], _style = nil;
-        _style = [style retain];
+        _style = nil;
+        _style = style;
                 
         [self _updateSubButtons];
     }
@@ -516,7 +515,7 @@
 
 	NSMutableAttributedString *attrStr;
 	NSString *contents = [self title];
-	attrStr = [[[NSMutableAttributedString alloc] initWithString:contents] autorelease];
+	attrStr = [[NSMutableAttributedString alloc] initWithString:contents];
 	NSRange range = NSMakeRange(0, [contents length]);
 
 	[attrStr addAttribute:NSFontAttributeName value:[NSFont systemFontOfSize:11.0] range:range];
@@ -525,7 +524,7 @@
 	// Paragraph Style for Truncating Long Text
 	static NSMutableParagraphStyle *truncatingTailParagraphStyle = nil;
 	if (!truncatingTailParagraphStyle) {
-		truncatingTailParagraphStyle = [[[NSParagraphStyle defaultParagraphStyle] mutableCopy] retain];
+		truncatingTailParagraphStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
 		[truncatingTailParagraphStyle setLineBreakMode:NSLineBreakByTruncatingTail];
 		[truncatingTailParagraphStyle setAlignment:NSCenterTextAlignment];
 	}
@@ -543,7 +542,7 @@
     }
 
 	NSString *contents = [NSString stringWithFormat:@"%lu", (unsigned long)[self objectCount]];
-	return [[[NSMutableAttributedString alloc] initWithString:contents attributes:objectCountStringAttributes] autorelease];
+	return [[NSMutableAttributedString alloc] initWithString:contents attributes:objectCountStringAttributes];
 }
 
 #pragma mark > Sub Buttons
@@ -1025,7 +1024,6 @@
 
     [NSGraphicsContext restoreGraphicsState];
         
-    [shadow release];
 }
 
 - (void)_drawObjectCounterWithFrame:(NSRect)frame inView:(NSView *)controlView {

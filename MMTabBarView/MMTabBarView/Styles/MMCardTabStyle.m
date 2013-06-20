@@ -57,16 +57,6 @@
     return self;
 }
 
-- (void)dealloc {
-    [cardCloseButton release];
-    [cardCloseButtonDown release];
-    [cardCloseButtonOver release];
-    [cardCloseDirtyButton release];
-    [cardCloseDirtyButtonDown release];
-    [cardCloseDirtyButtonOver release]; 
-    
-    [super dealloc];
-}
 
 #pragma mark -
 #pragma mark Tab View Specific
@@ -181,7 +171,6 @@
     if (gradient) {
         [gradient drawInRect:bounds angle:270];
     
-        [gradient release];
         }
 
     bounds = [tabBarView bounds];
@@ -271,7 +260,7 @@
 
         if (gradient != nil) {
             [gradient drawInBezierPath:fillPath angle:90.0f];
-            [gradient release], gradient = nil;
+            gradient = nil;
             }
     } else {
         [[NSColor windowBackgroundColor] set];

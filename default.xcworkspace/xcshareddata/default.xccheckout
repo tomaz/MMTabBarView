@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>C2D7B34B-785A-4998-BAB8-6394FB079C8D</string>
+	<key>IDESourceControlProjectName</key>
+	<string>default</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>D5FF7843-290C-44A6-9188-D7869D66D8FE</key>
+		<string>https://github.com/Edovia/MMTabBarView.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>default.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>D5FF7843-290C-44A6-9188-D7869D66D8FE</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/Edovia/MMTabBarView.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>D5FF7843-290C-44A6-9188-D7869D66D8FE</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>D5FF7843-290C-44A6-9188-D7869D66D8FE</string>
+			<key>IDESourceControlWCCName</key>
+			<string>MMTabBarView</string>
+		</dict>
+	</array>
+</dict>
+</plist>

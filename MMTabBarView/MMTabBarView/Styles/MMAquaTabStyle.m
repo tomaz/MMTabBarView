@@ -60,20 +60,6 @@
 	aquaCloseDirtyButtonOver = [[NSImage alloc] initByReferencingFile:[[MMTabBarView bundle] pathForImageResource:@"AquaTabCloseDirty_Front_Rollover"]];
 }
 
-- (void)dealloc {
-	[aquaTabBg release];
-	[aquaTabBgDown release];
-	[aquaDividerDown release];
-	[aquaDivider release];
-	[aquaCloseButton release];
-	[aquaCloseButtonDown release];
-	[aquaCloseButtonOver release];
-	[aquaCloseDirtyButton release];
-	[aquaCloseDirtyButtonDown release];
-	[aquaCloseDirtyButtonOver release];
-
-	[super dealloc];
-}
 
 #pragma mark -
 #pragma mark Tab View Specifics
@@ -290,18 +276,18 @@
 	//self = [super initWithCoder:aDecoder];
 	//if (self) {
 	if ([aDecoder allowsKeyedCoding]) {
-		aquaTabBg = [[aDecoder decodeObjectForKey:@"aquaTabBg"] retain];
-		aquaTabBgDown = [[aDecoder decodeObjectForKey:@"aquaTabBgDown"] retain];
-		aquaTabBgDownGraphite = [[aDecoder decodeObjectForKey:@"aquaTabBgDownGraphite"] retain];
-		aquaTabBgDownNonKey = [[aDecoder decodeObjectForKey:@"aquaTabBgDownNonKey"] retain];
-		aquaDividerDown = [[aDecoder decodeObjectForKey:@"aquaDividerDown"] retain];
-		aquaDivider = [[aDecoder decodeObjectForKey:@"aquaDivider"] retain];
-		aquaCloseButton = [[aDecoder decodeObjectForKey:@"aquaCloseButton"] retain];
-		aquaCloseButtonDown = [[aDecoder decodeObjectForKey:@"aquaCloseButtonDown"] retain];
-		aquaCloseButtonOver = [[aDecoder decodeObjectForKey:@"aquaCloseButtonOver"] retain];
-		aquaCloseDirtyButton = [[aDecoder decodeObjectForKey:@"aquaCloseDirtyButton"] retain];
-		aquaCloseDirtyButtonDown = [[aDecoder decodeObjectForKey:@"aquaCloseDirtyButtonDown"] retain];
-		aquaCloseDirtyButtonOver = [[aDecoder decodeObjectForKey:@"aquaCloseDirtyButtonOver"] retain];
+		aquaTabBg = [aDecoder decodeObjectForKey:@"aquaTabBg"];
+		aquaTabBgDown = [aDecoder decodeObjectForKey:@"aquaTabBgDown"];
+		aquaTabBgDownGraphite = [aDecoder decodeObjectForKey:@"aquaTabBgDownGraphite"];
+		aquaTabBgDownNonKey = [aDecoder decodeObjectForKey:@"aquaTabBgDownNonKey"];
+		aquaDividerDown = [aDecoder decodeObjectForKey:@"aquaDividerDown"];
+		aquaDivider = [aDecoder decodeObjectForKey:@"aquaDivider"];
+		aquaCloseButton = [aDecoder decodeObjectForKey:@"aquaCloseButton"];
+		aquaCloseButtonDown = [aDecoder decodeObjectForKey:@"aquaCloseButtonDown"];
+		aquaCloseButtonOver = [aDecoder decodeObjectForKey:@"aquaCloseButtonOver"];
+		aquaCloseDirtyButton = [aDecoder decodeObjectForKey:@"aquaCloseDirtyButton"];
+		aquaCloseDirtyButtonDown = [aDecoder decodeObjectForKey:@"aquaCloseDirtyButtonDown"];
+		aquaCloseDirtyButtonOver = [aDecoder decodeObjectForKey:@"aquaCloseDirtyButtonOver"];
 	}
 	//}
 	return self;
