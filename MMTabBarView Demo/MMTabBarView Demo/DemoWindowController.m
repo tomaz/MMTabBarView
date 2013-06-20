@@ -42,16 +42,14 @@
 - (void)awakeFromNib {
 
 	[[NSUserDefaults standardUserDefaults] registerDefaults:
-	 [NSDictionary dictionaryWithObjectsAndKeys:
-		  @"Card", @"Style",
-		  @"Horizontal", @"Orientation",
-		  @"Miniwindow", @"Tear-Off",
-		  @"100", @"TabMinWidth",
-		  @"280", @"TabMaxWidth",
-		  @"130", @"TabOptimalWidth",
-		  [NSNumber numberWithBool:YES], @"UseOverflowMenu",
-          [NSNumber numberWithBool:YES], @"AllowBackgroundClosing",
-		  nil]];
+	 @{@"Style": @"Card",
+		  @"Orientation": @"Horizontal",
+		  @"Tear-Off": @"Miniwindow",
+		  @"TabMinWidth": @"100",
+		  @"TabMaxWidth": @"280",
+		  @"TabOptimalWidth": @"130",
+		  @"UseOverflowMenu": @YES,
+          @"AllowBackgroundClosing": @YES}];
 
 	// toolbar
 	NSToolbar *toolbar = [[NSToolbar alloc] initWithIdentifier:@"DemoToolbar"];
@@ -129,7 +127,7 @@
 }
 
 - (void)setObjectCount:(id)sender {
-	[[[tabView selectedTabViewItem] identifier] setValue:[NSNumber numberWithInteger:[sender integerValue]] forKeyPath:@"objectCount"];
+	[[[tabView selectedTabViewItem] identifier] setValue:@([sender integerValue]) forKeyPath:@"objectCount"];
 }
 
 - (void)setObjectCountColor:(id)sender {
@@ -249,7 +247,7 @@
 
     if (object == tabBar) {
         if ([keyPath isEqualToString:@"orientation"]) {
-            [self _updateForOrientation:[[change objectForKey:NSKeyValueChangeNewKey] unsignedIntegerValue]];
+            [self _updateForOrientation:[change[NSKeyValueChangeNewKey] unsignedIntegerValue]];
         }
     } else {
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
@@ -318,7 +316,7 @@
 
 	[tabBar setButtonMinWidth:[sender integerValue]];
 
-	[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:[sender integerValue]]
+	[[NSUserDefaults standardUserDefaults] setObject:@([sender integerValue])
 	 forKey:@"TabMinWidth"];
 }
 
@@ -331,7 +329,7 @@
 
 	[tabBar setButtonMaxWidth:[sender integerValue]];
 
-	[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:[sender integerValue]]
+	[[NSUserDefaults standardUserDefaults] setObject:@([sender integerValue])
 	 forKey:@"TabMaxWidth"];
 }
 
@@ -455,11 +453,11 @@
 }
 
 - (NSArray *)allowedDraggedTypesForTabView:(NSTabView *)aTabView {
-	return [NSArray arrayWithObjects:NSFilenamesPboardType, NSStringPboardType, nil];
+	return @[NSFilenamesPboardType, NSStringPboardType];
 }
 
 - (BOOL)tabView:(NSTabView *)aTabView acceptedDraggingInfo:(id <NSDraggingInfo>)draggingInfo onTabViewItem:(NSTabViewItem *)tabViewItem {
-	NSLog(@"acceptedDraggingInfo: %@ onTabViewItem: %@", [[draggingInfo draggingPasteboard] stringForType:[[[draggingInfo draggingPasteboard] types] objectAtIndex:0]], [tabViewItem label]);
+	NSLog(@"acceptedDraggingInfo: %@ onTabViewItem: %@", [[draggingInfo draggingPasteboard] stringForType:[[draggingInfo draggingPasteboard] types][0]], [tabViewItem label]);
     return YES;
 }
 
@@ -614,17 +612,15 @@
 }
 
 - (NSArray *)toolbarDefaultItemIdentifiers:(NSToolbar*)toolbar {
-	return [NSArray arrayWithObjects:@"TabField",
+	return @[@"TabField",
 			NSToolbarFlexibleSpaceItemIdentifier,
-			@"DrawerItem",
-			nil];
+			@"DrawerItem"];
 }
 
 - (NSArray *)toolbarAllowedItemIdentifiers:(NSToolbar*)toolbar {
-	return [NSArray arrayWithObjects:@"TabField",
+	return @[@"TabField",
 			NSToolbarFlexibleSpaceItemIdentifier,
-			@"DrawerItem",
-			nil];
+			@"DrawerItem"];
 }
 
 - (IBAction)toggleToolbar:(id)sender {

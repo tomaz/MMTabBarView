@@ -115,7 +115,7 @@ static NSMutableDictionary *registeredStyleClasses = nil;
 	if (self) {
 		// Initialization
 		[self _commonInit];
-		[self registerForDraggedTypes:[NSArray arrayWithObjects:AttachedTabBarButtonUTI, nil]];
+		[self registerForDraggedTypes:@[AttachedTabBarButtonUTI]];
 
 		// resize
 		[self setPostsFrameChangedNotifications:YES];
@@ -346,7 +346,7 @@ static NSMutableDictionary *registeredStyleClasses = nil;
 }
 
 + (void)registerTabStyleClass:(Class <MMTabStyle>)aStyleClass {
-    [registeredStyleClasses setObject:aStyleClass forKey:[aStyleClass name]];
+    registeredStyleClasses[[aStyleClass name]] = aStyleClass;
 }
 
 + (void)unregisterTabStyleClass:(Class <MMTabStyle>)aStyleClass {
@@ -358,7 +358,7 @@ static NSMutableDictionary *registeredStyleClasses = nil;
 }
 
 + (Class <MMTabStyle>)registeredClassForStyleName:(NSString *)name {
-    return [registeredStyleClasses objectForKey:name];
+    return registeredStyleClasses[name];
 }
 
 #pragma mark -
@@ -637,7 +637,7 @@ static NSMutableDictionary *registeredStyleClasses = nil;
 
     NSUInteger indexOfSelectedAttachedButton = [self viewIndexOfSelectedAttachedButton];
     if (indexOfSelectedAttachedButton != NSNotFound)
-        return [[self subviews] objectAtIndex:indexOfSelectedAttachedButton];
+        return [self subviews][indexOfSelectedAttachedButton];
     else
         return nil;
 }
@@ -733,9 +733,9 @@ static NSMutableDictionary *registeredStyleClasses = nil;
                            *nextButton = nil;
     
     if (index+1 < [buttons count])
-        nextButton = [buttons objectAtIndex:index+1];
+        nextButton = buttons[index+1];
     if (index > 0)
-        prevButton = [buttons objectAtIndex:index-1];
+        prevButton = buttons[index-1];
 
     [self updateTabStateMaskOfAttachedButton:aButton atIndex:index withPrevious:prevButton next:nextButton];
 }
@@ -776,7 +776,7 @@ static NSMutableDictionary *registeredStyleClasses = nil;
         
         MMAttachedTabBarButton *nextButton = nil;
         if (idx+1 < NSMaxRange(range))
-            nextButton = [buttons objectAtIndex:idx+1];
+            nextButton = buttons[idx+1];
 
         if (opts & MMAttachedButtonsEnumerationUpdateButtonState) {
             if ([[aButton tabViewItem] isEqualTo:selectedTabViewItem])
@@ -1291,14 +1291,12 @@ static NSMutableDictionary *registeredStyleClasses = nil;
             }
                 
                 // start animated update of partner view
-            NSDictionary *partnerAnimDict = [NSDictionary dictionaryWithObjectsAndKeys:
-                _partnerView, NSViewAnimationTargetKey,
-                [NSValue valueWithRect:[_partnerView frame]], NSViewAnimationStartFrameKey,
-                [NSValue valueWithRect:resizeRect], NSViewAnimationEndFrameKey,
-                [NSNumber numberWithBool:hide], @"hide",
-                nil];
+            NSDictionary *partnerAnimDict = @{NSViewAnimationTargetKey: _partnerView,
+                NSViewAnimationStartFrameKey: [NSValue valueWithRect:[_partnerView frame]],
+                NSViewAnimationEndFrameKey: [NSValue valueWithRect:resizeRect],
+                @"hide": @(hide)};
 
-            NSArray *animDictArray = [NSArray arrayWithObjects:partnerAnimDict,nil];
+            NSArray *animDictArray = @[partnerAnimDict];
                 
             _hideShowTabBarAnimation = [[NSViewAnimation alloc] initWithViewAnimations:animDictArray    ];
             [_hideShowTabBarAnimation setDuration:0.1];
@@ -1558,11 +1556,9 @@ static NSMutableDictionary *registeredStyleClasses = nil;
         
         if (_showAddTabButton) {
         
-            NSDictionary *addButtonAnimDict = [[NSDictionary alloc] initWithObjectsAndKeys:
-            _addTabButton, NSViewAnimationTargetKey,
-            [NSValue valueWithRect:[_addTabButton frame]], NSViewAnimationStartFrameKey,
-            [NSValue valueWithRect:[self addTabButtonRect]], NSViewAnimationEndFrameKey,
-            nil];
+            NSDictionary *addButtonAnimDict = @{NSViewAnimationTargetKey: _addTabButton,
+            NSViewAnimationStartFrameKey: [NSValue valueWithRect:[_addTabButton frame]],
+            NSViewAnimationEndFrameKey: [NSValue valueWithRect:[self addTabButtonRect]]};
             [_slideButtonsAnimation addAnimationDictionary:addButtonAnimDict];
         } else {
             [self _positionAddTabButton];
@@ -1650,7 +1646,7 @@ static NSMutableDictionary *registeredStyleClasses = nil;
 
     NSPasteboard *pb = [sender draggingPasteboard];
     
-    if ([pb canReadItemWithDataConformingToTypes:[NSArray arrayWithObject:AttachedTabBarButtonUTI]]) {
+    if ([pb canReadItemWithDataConformingToTypes:@[AttachedTabBarButtonUTI]]) {
     
         MMTabDragAssistant *dragAssistant = [MMTabDragAssistant sharedDragAssistant];
         
@@ -1664,7 +1660,7 @@ static NSMutableDictionary *registeredStyleClasses = nil;
 
     NSPasteboard *pb = [sender draggingPasteboard];
     
-    if ([pb canReadItemWithDataConformingToTypes:[NSArray arrayWithObject:AttachedTabBarButtonUTI]]) {
+    if ([pb canReadItemWithDataConformingToTypes:@[AttachedTabBarButtonUTI]]) {
         
         MMTabDragAssistant *dragAssistant = [MMTabDragAssistant sharedDragAssistant];
         return [dragAssistant draggingUpdated:sender inTabBarView:self];
@@ -1716,7 +1712,7 @@ static NSMutableDictionary *registeredStyleClasses = nil;
     NSPasteboard *pb = [sender draggingPasteboard];
 
         //validate the drag operation only if there's a valid tab bar to drop into    
-    if (![pb canReadItemWithDataConformingToTypes:[NSArray arrayWithObject:AttachedTabBarButtonUTI]])
+    if (![pb canReadItemWithDataConformingToTypes:@[AttachedTabBarButtonUTI]])
         return NO;
     
     if (![[MMTabDragAssistant sharedDragAssistant] destinationTabBar])
@@ -1994,7 +1990,7 @@ static NSMutableDictionary *registeredStyleClasses = nil;
         NSArray *animations = [(NSViewAnimation*)animation viewAnimations];
         NSDictionary *animDict = [animations lastObject];
         
-        BOOL isHidden = [[animDict objectForKey:@"hide"] boolValue];
+        BOOL isHidden = [animDict[@"hide"] boolValue];
         if (!isHidden)
             [self setHidden:NO];
             
@@ -2069,7 +2065,7 @@ static NSMutableDictionary *registeredStyleClasses = nil;
 
 		[self _commonInit];
         
-		[self registerForDraggedTypes:[NSArray arrayWithObjects:AttachedTabBarButtonUTI, nil]];
+		[self registerForDraggedTypes:@[AttachedTabBarButtonUTI]];
 		
             // resize
 		[self setPostsFrameChangedNotifications:YES];
@@ -2530,9 +2526,7 @@ static NSMutableDictionary *registeredStyleClasses = nil;
     dataSource = [self _dataSourceForSelector:@selector(objectCount) withTabViewItem:item];
     if (dataSource)
         {
-        NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
-                [NSNumber numberWithBool:YES], NSConditionallySetsHiddenBindingOption,
-                nil];
+        NSDictionary *options = @{NSConditionallySetsHiddenBindingOption: @YES};
         [aButton bind:@"objectCount" toObject:dataSource withKeyPath:@"objectCount" options:options];
         }
     
