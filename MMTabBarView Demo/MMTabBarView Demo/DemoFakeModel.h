@@ -33,6 +33,9 @@
 @property (assign) BOOL      isEdited;
 @property (assign) BOOL      hasCloseButton;
 
+@property (readonly, getter = isActive) BOOL active;
+@property (readonly, getter = isConnected) BOOL connected;
+
 // designated initializer
 - (id)init;
 

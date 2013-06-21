@@ -253,6 +253,8 @@ typedef enum MMAttachedButtonsEnumerationOptions : NSUInteger {
 - (MMTabBarTearOffStyle)tearOffStyle;
 - (void)setTearOffStyle:(MMTabBarTearOffStyle)tearOffStyle;
 
+@property (assign) BOOL resizeTabsToFitTotalWidth;
+
 #pragma mark Accessors 
 
 - (NSTabView *)tabView;

@@ -32,6 +32,8 @@
         _hasCloseButton = YES;
         _title = @"Untitled";
         _objectCountColor = nil;
+        _active = YES;
+        _connected = YES;
 	}
 	return self;
 }

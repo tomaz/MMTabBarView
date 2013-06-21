@@ -73,6 +73,11 @@
 	[drawer toggle:self];
 }
 
+- (void)dealloc
+{
+    NSLog(@"ff");
+}
+
 - (void)addNewTabWithTitle:(NSString *)aTitle {
 
 	DemoFakeModel *newModel = [[DemoFakeModel alloc] init];
