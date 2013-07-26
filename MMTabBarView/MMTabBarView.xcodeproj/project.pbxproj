@@ -865,7 +865,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "codesign -f -v -s \"Developer ID Application: Edovia Inc.\" $BUILT_PRODUCTS_DIR/MMTabBarView.framework/Versions/A";
+			shellScript = "#codesign -f -v -s \"Developer ID Application: Edovia Inc.\" $BUILT_PRODUCTS_DIR/MMTabBarView.framework/Versions/A";
 		};
 /* End PBXShellScriptBuildPhase section */
 
