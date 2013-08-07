@@ -16,11 +16,9 @@
 }
 
 - (id)initWithFrame:(NSRect)frameRect {
-
-    self = [super initWithFrame:frameRect];
-    if (self) {
+    if ((self = [super initWithFrame:frameRect])) {
+        self.focusRingType = NSFocusRingTypeNone;
     }
-    
     return self;
 }
 
