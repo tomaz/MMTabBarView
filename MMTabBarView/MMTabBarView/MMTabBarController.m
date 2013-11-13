@@ -14,6 +14,12 @@
 
 #define MAX_OVERFLOW_MENUITEM_TITLE_LENGTH      60
 
+@interface MMTabBarView (Private)
+- (void)_overflowMenuAction:(id)sender;
+- (void)_didClickTabButton:(id)sender;
+- (void)_didClickCloseButton:(id)sender;
+@end
+
 @interface MMTabBarController (Private)
 - (NSArray *)_generateWidthsFromAttachedButtons:(NSArray *)buttons;
 - (void)_setupAttachedButtons:(NSArray *)buttons withWidths:(NSArray *)widths;

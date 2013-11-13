@@ -2,35 +2,37 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>BDABF6F8-391C-4D88-84CF-38C07712839A</string>
+	<string>272CC42B-3B4B-47F7-9E7E-B558709465D1</string>
 	<key>IDESourceControlProjectName</key>
 	<string>default</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>20BAF631-9954-4F30-BB89-BEE720456B36</key>
-		<string>https://github.com/Edovia/MMTabBarView.git</string>
+		<key>43A00ED9-D0AA-4321-806B-922043425BAB</key>
+		<string>https://github.com/tomaz/MMTabBarView.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>default.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>20BAF631-9954-4F30-BB89-BEE720456B36</key>
+		<key>43A00ED9-D0AA-4321-806B-922043425BAB</key>
 		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/Edovia/MMTabBarView.git</string>
+	<string>https://github.com/tomaz/MMTabBarView.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>20BAF631-9954-4F30-BB89-BEE720456B36</string>
+	<string>43A00ED9-D0AA-4321-806B-922043425BAB</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>20BAF631-9954-4F30-BB89-BEE720456B36</string>
+			<string>43A00ED9-D0AA-4321-806B-922043425BAB</string>
 			<key>IDESourceControlWCCName</key>
 			<string>MMTabBarView</string>
 		</dict>
